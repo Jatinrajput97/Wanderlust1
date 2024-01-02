@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, "/public")))
 const store=MongoStore.create({
   mongoUrl:dbUrl,
   crypto:{
-    secret:SECRECT
+    secret:process.env.SECRECT
   },
   touchAfter:24*3600,
 })
@@ -56,7 +56,7 @@ console.log("ERROR in MONGO SESSION STORE", err);
 
 const sessionOptions= {
   store,
-  secret:SECRECT,
+  secret:process.env.SECRECT,
   resave: false,
   saveUninitialized:true,
   cookie:{
